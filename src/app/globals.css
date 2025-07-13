@@ -1,26 +1,158 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 280 30% 96%;
+    --foreground: 270 50% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 270 50% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 270 50% 15%;
+
+    --primary: 270 75% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 320 80% 65%;
+    --secondary-foreground: 0 0% 100%;
+
+    --accent: 35 90% 65%;
+    --accent-foreground: 270 50% 15%;
+
+    --muted: 270 20% 90%;
+    --muted-foreground: 270 30% 40%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 270 30% 85%;
+    --input: 270 30% 85%;
+    --ring: 270 75% 60%;
+
+    --radius: 1rem;
+
+    --sidebar-background: 270 30% 96%;
+    --sidebar-foreground: 270 50% 15%;
+    --sidebar-primary: 270 75% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 280 30% 90%;
+    --sidebar-accent-foreground: 270 50% 15%;
+    --sidebar-border: 270 30% 85%;
+    --sidebar-ring: 270 75% 60%;
+  }
+
+  .dark {
+    --background: 270 30% 8%;
+    --foreground: 270 20% 95%;
+
+    --card: 270 30% 12%;
+    --card-foreground: 270 20% 95%;
+
+    --popover: 270 30% 12%;
+    --popover-foreground: 270 20% 95%;
+
+    --primary: 270 75% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 320 80% 60%;
+    --secondary-foreground: 0 0% 100%;
+
+    --accent: 35 90% 65%;
+    --accent-foreground: 270 30% 10%;
+
+    --muted: 270 20% 20%;
+    --muted-foreground: 270 20% 70%;
+
+    --destructive: 0 62.8% 50.6%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 270 25% 25%;
+    --input: 270 25% 25%;
+    --ring: 270 75% 60%;
+
+    --sidebar-background: 270 30% 12%;
+    --sidebar-foreground: 270 20% 95%;
+    --sidebar-primary: 270 75% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 270 25% 20%;
+    --sidebar-accent-foreground: 270 20% 95%;
+    --sidebar-border: 270 25% 25%;
+    --sidebar-ring: 270 75% 60%;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  .art-card {
+    @apply rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+
+  .art-card:hover {
+    transform: translateY(-5px) scale(1.01);
+  }
+
+  .glass-panel {
+    @apply bg-white/30 backdrop-blur-lg border border-white/30 rounded-xl shadow-lg;
+  }
+
+  .funky-gradient {
+    @apply bg-gradient-to-br from-primary via-secondary to-accent;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+  }
+
+  .art-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-gap: 2rem;
+  }
+
+  .floating {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(-15px);
+    }
+
+    100% {
+      transform: translateY(0px);
+    }
+  }
+
+  .spin-slow {
+    animation: spin 15s linear infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 }
