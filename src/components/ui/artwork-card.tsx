@@ -2,6 +2,7 @@ import { Heart } from 'lucide-react';
 import { Artwork } from '@/components/lib/types';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface ArtworkCardProps {
   artwork: Artwork;
